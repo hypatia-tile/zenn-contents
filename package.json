@@ -11,7 +11,7 @@
   "type": "commonjs",
   "scripts": {
     "preview": "zenn preview",
-    "lint:text": "textlint articles books",
+    "lint:text": "sh scripts/lint-text.sh",
     "lint:md": "markdownlint-cli2 \"articles/**/*.md\" \"books/**/*.md\"",
     "lint:links": "lychee --no-progress articles books"
   },
