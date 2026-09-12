@@ -1,0 +1,8 @@
+node_modules/
+
+result
+result-*
+.direnv/
+
+# pnpm
+.pnpm-store/

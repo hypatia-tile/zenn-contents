@@ -1,0 +1,24 @@
+{
+  "name": "zenn-contents",
+  "version": "1.0.0",
+  "description": "Write content to post to `https://zenn.dev/`",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypatia-tile/zenn-contents.git"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "scripts": {
+    "preview": "zenn preview",
+    "lint:text": "textlint articles books",
+    "lint:md": "markdownlint-cli2 \"articles/**/*.md\" \"books/**/*.md\"",
+    "lint:links": "lychee --no-progress articles books"
+  },
+  "devDependencies": {
+    "textlint": "^15.2.2",
+    "textlint-rule-preset-ja-technical-writing": "^12.0.2",
+    "zenn-cli": "^0.5.4"
+  },
+  "packageManager": "pnpm@11.25.0"
+}

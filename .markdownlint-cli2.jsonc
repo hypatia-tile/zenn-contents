@@ -1,0 +1,12 @@
+{
+  "config": {
+    // Zenn の記事は frontmatter の title が見出し相当なので H1 を要求しない
+    "first-line-heading": false,
+    // 日本語の文章では行長制限は実用的でない
+    "line-length": false,
+    // Zenn のメッセージ記法 :::message などを壊さないため
+    "no-inline-html": false
+  },
+  "globs": ["articles/**/*.md", "books/**/*.md"],
+  "ignores": ["node_modules/**"]
+}

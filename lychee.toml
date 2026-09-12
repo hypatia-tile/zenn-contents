@@ -1,0 +1,7 @@
+# リンク切れチェックの設定
+no_progress = true
+max_retries = 2
+timeout = 20
+# 404 を返しがちだが実際には生きているサイト向け
+accept = ["200..=299", "403", "429"]
+exclude_path = ["node_modules"]
