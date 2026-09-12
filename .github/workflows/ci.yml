@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Superseded runs on the same branch are not worth paying for.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v23
+
+      - name: Set up the Nix binary cache
+        uses: DeterminateSystems/magic-nix-cache-action@v15
+
+      # The dev shell pins Node.js, pnpm, markdownlint-cli2, typos and lychee,
+      # so CI runs exactly the versions used locally.
+      - name: Install pnpm dependencies
+        run: nix develop --command pnpm install --frozen-lockfile
+
+      - name: textlint
+        run: nix develop --command pnpm lint:text
+
+      - name: markdownlint
+        run: nix develop --command markdownlint-cli2
+
+      - name: typos
+        run: nix develop --command typos articles books
+
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: DeterminateSystems/nix-installer-action@v23
+
+      - uses: DeterminateSystems/magic-nix-cache-action@v15
+
+      # External links break for reasons outside this repository, so a failure
+      # here should not block a merge.
+      - name: Check for broken links
+        continue-on-error: true
+        run: nix develop --command lychee articles books
