@@ -1,52 +1,52 @@
 # zenn-contents
 
-Write content to post to `https://zenn.dev/`
+`https://zenn.dev/` に投稿するコンテンツを書くためのリポジトリです。
 
-## Setup
+## セットアップ
 
-Everything needed for writing is pinned inside this repository. Nothing has to
-be installed globally.
-
-```sh
-nix develop        # runs pnpm install automatically on first entry
-```
-
-With direnv, once only:
+執筆に必要なものはすべてこのリポジトリ内で pin されています。
+グローバルにインストールするものはありません。
 
 ```sh
-direnv allow       # afterwards the dev shell is entered just by cd-ing in
+nix develop        # 初回に入ったときに pnpm install が自動で走る
 ```
 
-## Commands
+direnv を使う場合は、最初に一度だけ次を実行します。
 
 ```sh
-zenn preview        # preview the content in a browser
-zenn new:article    # add a new article
-zenn new:book       # add a new book
-zenn list:articles  # list articles
-zenn list:books     # list books
+direnv allow       # 以降は cd するだけで dev shell に入る
 ```
 
-See https://zenn.dev/zenn/articles/zenn-cli-guide for details.
+## コマンド
+
+```sh
+zenn preview        # ブラウザでコンテンツをプレビュー
+zenn new:article    # 記事を追加
+zenn new:book       # 本を追加
+zenn list:articles  # 記事の一覧
+zenn list:books     # 本の一覧
+```
+
+詳しくは <https://zenn.dev/zenn/articles/zenn-cli-guide> を参照してください。
 
 ## Lint
 
 ```sh
-pnpm lint:text        # textlint - Japanese prose (ja-technical-writing preset)
-markdownlint-cli2     # Markdown syntax and style
-typos articles books  # typo detection
-lychee articles books # broken link check
+pnpm lint:text        # textlint - 日本語の文章 (ja-technical-writing preset)
+markdownlint-cli2     # Markdown の構文とスタイル
+typos articles books  # typo の検出
+lychee articles books # リンク切れの検出
 ```
 
-Some findings are auto-fixable with `textlint --fix`.
+一部の指摘は `textlint --fix` で自動修正できます。
 
-## Where things are pinned
+## pin の管理場所
 
-| What | Pinned by | How to update |
+| 対象 | pin しているファイル | 更新方法 |
 | --- | --- | --- |
-| zenn-cli, textlint, textlint rules | `pnpm-lock.yaml` | `pnpm update` |
+| zenn-cli, textlint, textlint のルール | `pnpm-lock.yaml` | `pnpm update` |
 | Node.js, pnpm, markdownlint-cli2, typos, lychee | `flake.lock` | `nix flake update` |
 
-The textlint rule packages (`textlint-rule-preset-ja-technical-writing` and
-friends) are not in nixpkgs and can only be installed from npm, so all
-JavaScript tooling is kept on the pnpm side.
+textlint のルールパッケージ (`textlint-rule-preset-ja-technical-writing` など) は
+nixpkgs になく、npm からしかインストールできません。
+そのため JavaScript のツール類はすべて pnpm 側で管理しています。
