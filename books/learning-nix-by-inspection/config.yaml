@@ -1,0 +1,11 @@
+title: "Nix ジュニアの観察ノート"
+summary: "Nix 初学者が CLI で中身を覗き、source を読みながら理解を書き出していく学習ノートです。"
+topics: ["nix"]
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - inspection
+  - finding-source
+  - purity-errors
+  - flakes
