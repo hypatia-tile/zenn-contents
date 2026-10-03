@@ -25,14 +25,19 @@ jobs:
       - name: Install pnpm dependencies
         run: nix develop --command pnpm install --frozen-lockfile
 
+      # Only published content is linted: drafts grow on main in a rough
+      # state, and flipping `published: true` is what puts them behind the gate.
       - name: textlint
         run: nix develop --command pnpm lint:text
 
       - name: markdownlint
-        run: nix develop --command markdownlint-cli2
+        run: nix develop --command pnpm lint:md
 
       - name: typos
-        run: nix develop --command typos articles books
+        run: nix develop --command pnpm lint:typos
+
+      - name: Leftover TODO/Q comments
+        run: nix develop --command pnpm lint:markers
 
   links:
     runs-on: ubuntu-latest

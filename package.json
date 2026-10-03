@@ -11,8 +11,10 @@
   "type": "commonjs",
   "scripts": {
     "preview": "zenn preview",
-    "lint:text": "sh scripts/lint-text.sh",
-    "lint:md": "markdownlint-cli2 \"articles/**/*.md\" \"books/**/*.md\"",
+    "lint:text": "sh scripts/lint.sh text",
+    "lint:md": "sh scripts/lint.sh md",
+    "lint:typos": "sh scripts/lint.sh typos",
+    "lint:markers": "sh scripts/lint.sh markers",
     "lint:links": "lychee --no-progress articles books"
   },
   "devDependencies": {

@@ -7,6 +7,5 @@
     // Zenn のメッセージ記法 :::message などを壊さないため
     "no-inline-html": false
   },
-  "globs": ["articles/**/*.md", "books/**/*.md"],
   "ignores": ["node_modules/**"]
 }
