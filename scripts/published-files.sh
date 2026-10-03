@@ -16,6 +16,13 @@ frontmatter_published() {
   ' "$1"
 }
 
+# books/scratch-notes holds private notes that only exist to be read in
+# zenn preview. Refuse to go on rather than lint it as if it were publishable.
+if grep -Eq '^published:[[:space:]]*true([[:space:]]|#|$)' books/scratch-notes/config.yaml 2>/dev/null; then
+  echo "published-files: books/scratch-notes must stay published: false" >&2
+  exit 1
+fi
+
 for f in articles/*.md; do
   [ -f "$f" ] || continue
   if frontmatter_published "$f"; then echo "$f"; fi

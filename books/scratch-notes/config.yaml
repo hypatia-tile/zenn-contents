@@ -1,0 +1,9 @@
+title: "scratch notes"
+summary: "公開しないメモ置き場です。zenn preview で読むためだけに本の形をとっています。"
+topics: []
+# Never flip this: scripts/published-files.sh refuses to run if it is true.
+published: false
+price: 0
+# Each note is a chapter. Listing it here gives it a place in the book's order;
+# zenn preview also shows unlisted chapters, just without a position.
+chapters: []

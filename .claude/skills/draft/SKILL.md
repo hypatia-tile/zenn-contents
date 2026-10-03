@@ -27,6 +27,12 @@ backlog of topics on your own.
 ## Conventions
 
 - Drafts live on `main` with `published: false`. There are no draft branches.
+- Rough notes that will never be published live in the book
+  `books/scratch-notes/`, one chapter per broad topic (`emacs.md`, `nix.md`).
+  It is a book only so the owner can read the notes in `zenn preview`. Its
+  `published` stays false — `scripts/published-files.sh` fails if it is not.
+  A note that grows into an article is rewritten by the owner under
+  `articles/`; never move or copy it there yourself.
 - An article is `articles/<slug>.md`; it is published by its own frontmatter.
   A book is `books/<slug>/`; its `config.yaml` `published` covers every
   chapter, and a chapter is only part of the book once it is listed in
@@ -47,7 +53,9 @@ backlog of topics on your own.
 
 ## Start a topic
 
-1. Ask whether it is an article or a chapter of a book (existing or new).
+1. Ask whether it is a note, an article, or a chapter of a book (existing or
+   new). A note is a new chapter of `scratch-notes`; first check that an
+   existing note does not already cover the topic.
 2. Agree on the slug with the owner. Article slugs are 12–50 characters of
    `a-z0-9_-`, and the slug is the filename — Zenn treats a renamed file as a
    different article. Check it is not taken.
@@ -58,13 +66,18 @@ backlog of topics on your own.
    - Book chapter: create `books/<book>/<chapter>.md` with just a `title` in
      frontmatter, and add it to `chapters` in `config.yaml` only if the owner
      wants it in the book's order now.
+   - Note: create `books/scratch-notes/<topic>.md` with just a `title`, and
+     append it to `chapters` in that book's `config.yaml` (chapter filenames
+     have no length minimum). Unlisted chapters still show in preview, but
+     without a place in the order.
    - New book: `zenn new:book --slug <slug>` (`published` defaults to false).
 4. Commit the empty draft on its own (see Commit).
 
 ## Take stock
 
 When asked where things stand, report every unpublished article and book
-chapter (and, if asked, the published ones too). For each:
+chapter (and, if asked, the published ones too), with the `scratch-notes`
+chapters as their own group. For each:
 
 - the last commit touching it: `git log -1 --format='%cs %s' -- <file>`
 - whether it has uncommitted changes (`git status --short -- <file>`)
@@ -77,7 +90,7 @@ in the files; do not summarise or judge the content unless asked.
 ## Commit
 
 The owner edits; you commit. One commit per topic, staging only that topic's
-files (the draft, and its book's `config.yaml` if it changed) — never sweep
+files (the draft or note, and its book's `config.yaml` if it changed) — never sweep
 several topics into one commit, so `git log -- <file>` tells one draft's
 story.
 

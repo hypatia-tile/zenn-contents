@@ -35,6 +35,9 @@ zenn list:books     # 本の一覧
 本は `config.yaml` の `published` がそのチャプター全体に効きます。
 公開は `published: true` にするコミットで行います。
 
+公開しない粗いメモは本 `books/scratch-notes/` に、トピックごとの 1 チャプターとして書きます。
+`zenn preview` で読むためだけの本で、`published: true` にすると lint が失敗します。
+
 本文中の自分用メモは 1 行の HTML コメントで書きます。
 Zenn では表示されませんが、このリポジトリは public なので GitHub からは読めます。
 
