@@ -1,0 +1,6 @@
+interface:
+  display_name: "Zenn Polish"
+  short_description: "Polish Zenn drafts and maintain the English word list"
+  default_prompt: "Use $zenn-polish to polish the specified Zenn Markdown file."
+policy:
+  allow_implicit_invocation: false

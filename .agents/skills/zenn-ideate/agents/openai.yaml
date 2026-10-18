@@ -1,0 +1,6 @@
+interface:
+  display_name: "Zenn Ideate"
+  short_description: "Develop your Zenn article idea through focused questions"
+  default_prompt: "Use $zenn-ideate to help me develop this Zenn article idea without drafting it for me."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Zenn Housekeeping"
+  short_description: "Review and archive stale Zenn work products safely"
+  default_prompt: "Use $zenn-housekeeping to review this repository for stale work products and propose an archive plan."
+policy:
+  allow_implicit_invocation: false
