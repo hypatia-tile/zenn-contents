@@ -27,16 +27,25 @@ backlog of topics on your own.
 ## Conventions
 
 - Drafts live on `main` with `published: false`. There are no draft branches.
-- Rough notes that will never be published live in the book
-  `books/scratch-notes/`, one chapter per broad topic (`emacs.md`, `nix.md`).
-  It is a book only so the owner can read the notes in `zenn preview`. Its
-  `published` stays false — `scripts/published-files.sh` fails if it is not.
-  A note that grows into an article is rewritten by the owner under
-  `articles/`; never move or copy it there yourself.
-- An article is `articles/<slug>.md`; it is published by its own frontmatter.
-  A book is `books/<slug>/`; its `config.yaml` `published` covers every
-  chapter, and a chapter is only part of the book once it is listed in
-  `chapters`.
+- Where a piece of writing goes is `docs/drafts.md`. In short:
+  - A scratch note (`books/scratch-notes/<topic>.md`, one chapter per topic)
+    is a note not planned for publication yet. The book exists so the owner
+    can read it in `zenn preview`. Its `published` stays false —
+    `scripts/published-files.sh` fails if it is not. The book's `published`
+    covers every chapter, so a note stays unpublished while it lives there.
+  - An article (`articles/<slug>.md`) is for material the owner judges a
+    suitable article: relatively narrow and deep. Publishing depends on
+    quality, and is the owner's edit of that file's frontmatter.
+  - A large topic that will not come together as a scratch note gets its own
+    book (`books/<slug>/`) or article. Publishing likewise depends on quality.
+  - Until something is published, its title may change. Filename prefixes are
+    not a convention. An article's filename is its slug; renaming the file
+    makes it a different article. Changing `title` leaves the slug as it is.
+  - When the owner rewrites a note as an article, they rewrite it under
+    `articles/`. Never move or copy it there yourself. While the body still
+    grows as a scratch note, the article file may hold frontmatter only, so
+    the slug stays reserved.
+- A chapter is part of its book once it is listed in `chapters`.
 - Notes to self inside a draft are single-line HTML comments. Zenn does not
   render them, but the repository is public, so they are readable on GitHub.
 
@@ -53,9 +62,9 @@ backlog of topics on your own.
 
 ## Start a topic
 
-1. Ask whether it is a note, an article, or a chapter of a book (existing or
-   new). A note is a new chapter of `scratch-notes`; first check that an
-   existing note does not already cover the topic.
+1. Ask which place in `docs/drafts.md` it belongs to. A scratch note is a new
+   chapter of `scratch-notes`; first check that an existing note does not
+   already cover the topic. The title may still change until it is published.
 2. Agree on the slug with the owner. Article slugs are 12–50 characters of
    `a-z0-9_-`, and the slug is the filename — Zenn treats a renamed file as a
    different article. Check it is not taken.
